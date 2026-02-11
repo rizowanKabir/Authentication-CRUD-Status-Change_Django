@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #4e73df, #1cc88a);
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 400px;
+            margin: 80px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4e73df;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2e59d9;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <h2>Register</h2>
+        {% include "messages.html" %}
+        <form method="POST">
+            {% csrf_token %}
+
+            <label>Full Name</label>
+            <input type="text" name="full_name" placeholder="Enter Your full name"  required>
+
+            <label>Username</label>
+            <input type="text" name="username"placeholder="Enter Your username" required>
+
+            <label>Email</label>
+            <input type="email" name="email"placeholder="Enter Your Email" required>
+
+            <label>User Type</label>
+            <select name="user_type" required>
+                <option value="">Select Type</option>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+            </select>
+
+            <label>Password</label>
+            <input type="password" name="password"placeholder="Enter Your Password" required>
+
+            <label>Confirm Password</label>
+            <input type="password" name="confirm_password"placeholder="Enter Your confirm_password" required>
+
+            <button type="submit">Register</button>
+        </form>
+         <p style="text-align:center; margin-top:15px;">
+    Already have an account?
+    <a href="{% url 'login_page' %}">Login here</a>
+    </p>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body> 
+<div class="container">
+    <h2>Edit Task</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Task Name</label>
+        <input type="text" name="task_name" value="{{edit_task.task_name}}" required>
+
+        <label>Task Description</label>
+        <textarea name="task_description" rows="4" required>{{edit_task.task_description}}</textarea>
+
+        <label>Task Status</label>
+        <select name="task_status" required>
+            <option value="">Select Status</option>
+            <option value="NotStarted" {% if edit_task.task_status == 'NotStarted' %}selected{% endif %}>Not Started</option>
+            <option value="InProgress" {% if edit_task.task_status == 'InProgress' %}selected{% endif %}>In Progress</option>
+            <option value="Completed" {% if edit_task.task_status == 'Completed' %}selected{% endif %}>Completed</option>
+        </select>
+
+        <label>Deadline</label>
+        <input type="date" name="deadline" value = "{{edit_task.deadline|date:'Y-m-d'}}" required>
+
+        <button type="submit">Edit Task</button>
+    </form>
+</div>
+
+</body>
+</html>
+
+{% endblock %}

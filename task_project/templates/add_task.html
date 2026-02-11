@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body> 
+<div class="container">
+    <h2>Add Task</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Task Name</label>
+        <input type="text" name="task_name" required>
+
+        <label>Task Description</label>
+        <textarea name="task_description" rows="4" required></textarea>
+
+        <label>Task Status</label>
+        <select name="task_status" required>
+            <option value="">Select Status</option>
+            <option value="NotStarted">Not Started</option>
+            <option value="InProgress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select>
+
+        <label>Deadline</label>
+        <input type="date" name="deadline" required>
+
+        <button type="submit">Add Task</button>
+    </form>
+</div>
+
+</body>
+</html>
+
+{% endblock %}
